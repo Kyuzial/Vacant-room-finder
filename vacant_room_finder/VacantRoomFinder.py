@@ -3,7 +3,7 @@ import html
 import json
 import os
 import re
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import discord
 import requests
@@ -249,7 +249,7 @@ class FreeRoomFinder(commands.Cog):
                 title=f" ViteMaSalle — {discord_moment} (Germain & Fermat)",
                 description=f"{redTick} Aucune salle libre n'est malheureusement disponible {discord_moment2} dans les **bâtiments Germain et Fermat.**",
                 color=0xCD5C5C,
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(timezone.utc),
             )
         else:
             em_desc = ""
@@ -267,7 +267,7 @@ class FreeRoomFinder(commands.Cog):
                 title=f" ViteMaSalle — {discord_moment} (Germain & Fermat)",
                 description=em_desc,
                 color=0xB2E4D7,
-                timestamp=datetime.utcnow(),
+                timestamp=datetime.now(timezone.utc),
             )
 
             for i, floor in enumerate(output_g):
