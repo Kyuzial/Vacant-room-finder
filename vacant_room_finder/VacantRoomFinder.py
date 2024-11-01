@@ -315,19 +315,36 @@ class FreeRoomFinder(commands.Cog):
         await ctx.send("ERR - `{}`".format(error))
 
 
-intents = discord.Intents.default()
-intents.guild_messages = True
-intents.message_content = True
-intents.emojis = True
-bot = commands.Bot(command_prefix=":", intents=intents)
-
-
 async def main():
-    async with bot:
-        load_dotenv()
-        secret_key = os.getenv("SECRET_KEY")
-        await bot.add_cog(FreeRoomFinder(bot))
+    """Bot startup"""
+    load_dotenv()
+
+    secret_key = os.getenv("SECRET_KEY")
+    if not secret_key:
+        raise ValueError("SECRET_KEY not found in .env file")
+
+    intents = discord.Intents.default()
+    intents.message_content = True
+    intents.guild_messages = True
+
+    bot = commands.Bot(command_prefix=":", intents=intents)
+
+    await bot.add_cog(FreeRoomFinder(bot))
+
+    try:
         await bot.start(secret_key)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        await bot.close()
 
 
-asyncio.run(main())
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        print("\nShutting down gracefully...")
+    except ValueError as e:
+        print(f"Startup Error: {e}")
+    finally:
+        print("Shutdown complete.")
