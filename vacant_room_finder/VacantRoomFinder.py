@@ -15,11 +15,11 @@ redTick = ""
 
 batiments = {
     "Germain": [
-        ["G001 - GERMAIN", "G002 - GERMAIN", "G003 - GERMAIN", "G007 - GERMAIN"],
+        ["G001 - GERMAIN", "G002 - GERMAIN", "G003 - GERMAIN", "G007 - GERMAIN (MASTER)"],
         [
             "G101 - GERMAIN",
             "G103 - GERMAIN",
-            "G104 - GERMAIN",
+            "G104 - GERMAIN (MASTER)",
             "G105 - GERMAIN",
             "G107 - GERMAIN",
         ],
@@ -27,9 +27,9 @@ batiments = {
             "G201 - GERMAIN",
             "G203 - GERMAIN",
             "G204 - GERMAIN",
-            "G205 - GERMAIN",
-            "G206 - GERMAIN",
-            "G207 - GERMAIN",
+            "G205 - GERMAIN (MASTER)",
+            "G206 - GERMAIN (MASTER)",
+            "G207 - GERMAIN (MASTER)",
             "G209 - GERMAIN",
             "G210 - GERMAIN",
         ],

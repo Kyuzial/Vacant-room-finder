@@ -1,0 +1,7 @@
+services:
+  vacant-room-finder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vacant-room-finder
+    restart: unless-stopped
